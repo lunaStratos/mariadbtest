@@ -1,0 +1,15 @@
+show variables like "char%";
+
+
+Incorrect string value: '\xE5\x89\x8D' for column 'name' at row 1
+위 문구를 쓰면 DB의 문자상태를 알수 있다. 
+한문과 한글의 경우 문자열 에러가 날 수 있다.
+
+
+C:\Program Files\MariaDB 10.2\data
+[mysql]
+default-character-set=utf8
+
+아래와 같이 추가
+
+ALTER TABLE `nexture_account` CHARSET utf8,CHANGE `name` `name` varchar(30) character set utf8;

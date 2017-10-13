@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testdrive.test.Mapper.accountMapper">
+	<insert id="register" parameterType="account">
+		insert into
+		mariadb_account( 
+		uid,
+		password,
+		name
+		)
+		values
+		(
+		#{uid},
+		#{password},
+		#{name}
+		)
+	</insert>
+
+	<select id="list" resultType="account">
+		select uid, name from mariadb_account
+	</select>
+
+	<select id="login" parameterType="account" resultType="account">
+		select
+		uid, password from mariadb_account where uid = #{uid} and password =
+		#{password}
+	</select>
+	
+	<select id="idcheck" parameterType="string" resultType="string">
+		select
+		uid 
+		from 
+		mariadb_account 
+		where uid = #{uid}
+	</select>
+
+</mapper>
